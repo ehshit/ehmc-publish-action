@@ -1,0 +1,17 @@
+{
+  "name": "ehmc-publish-action",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/main.ts -o dist --source-map --license licenses.txt",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@vercel/ncc": "^0.45.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT"
+}

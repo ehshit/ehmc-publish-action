@@ -1,0 +1,122 @@
+name: "Eh's Minecraft Publisher"
+description: "Yet another publisher for Modrinth, CurseForge and Github, anything else??"
+author: "ehuh"
+branding:
+  icon: "upload-cloud"
+  color: "purple"
+
+inputs:
+  github-token:
+    description: "GitHub token for creating releases and uploading assets"
+    required: false
+    default: ""
+  modrinth-token:
+    description: "Modrinth API token"
+    required: false
+    default: ""
+  modrinth-id:
+    description: "Modrinth project ID"
+    required: false
+    default: ""
+  curseforge-token:
+    description: "CurseForge API token"
+    required: false
+    default: ""
+  curseforge-id:
+    description: "CurseForge project ID"
+    required: false
+    default: ""
+  version:
+    description: "Version number, e.g. 1.2.4+1.21.11"
+    required: true
+  version-type:
+    description: "Release channel: release, beta, or alpha"
+    required: false
+    default: "release"
+  name:
+    description: "Display name"
+    required: false
+    default: ""
+  changelog:
+    description: "Changelog text"
+    required: false
+    default: ""
+  changelog-file:
+    description: "Path to a changelog file"
+    required: false
+    default: ""
+  files:
+    description: "Newline-separated file globs to publish"
+    required: true
+  primary-file:
+    description: "Primary file path or basename; defaults to the first match"
+    required: false
+    default: ""
+  game-versions:
+    description: "Newline- or comma-separated game versions"
+    required: false
+    default: ""
+  loaders:
+    description: "Newline- or comma-separated loaders"
+    required: false
+    default: "fabric"
+  java:
+    description: "Java version for CurseForge metadata"
+    required: false
+    default: ""
+  dependencies:
+    description: "Newline-separated dependencies in name@version(type){modrinth:id}{curseforge:id} format"
+    required: false
+    default: ""
+  github-tag:
+    description: "GitHub tag to create or update"
+    required: false
+    default: ""
+  github-repository:
+    description: "owner/repo for the GitHub release; defaults to the calling repository"
+    required: false
+    default: ""
+  github-draft:
+    description: "Create the GitHub release as a draft"
+    required: false
+    default: "false"
+  github-prerelease:
+    description: "Mark the GitHub release as a prerelease"
+    required: false
+    default: "false"
+  github-generate-notes:
+    description: "Let GitHub generate release notes"
+    required: false
+    default: "false"
+  modrinth-featured:
+    description: "Mark the Modrinth version as featured"
+    required: false
+    default: "false"
+  modrinth-status:
+    description: "Modrinth version status: listed, archived, draft, or unlisted"
+    required: false
+    default: "listed"
+  curseforge-changelog-type:
+    description: "CurseForge changelog type: text, html, or markdown"
+    required: false
+    default: "markdown"
+  curseforge-game-endpoint:
+    description: "CurseForge game endpoint, e.g. minecraft"
+    required: false
+    default: "minecraft"
+
+outputs:
+  github-release-url:
+    description: "URL of the GitHub release"
+  github-release-id:
+    description: "ID of the GitHub release"
+  modrinth-version-id:
+    description: "ID of the Modrinth version"
+  modrinth-version-url:
+    description: "URL of the Modrinth version"
+  curseforge-file-id:
+    description: "ID of the primary CurseForge file"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
